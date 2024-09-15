@@ -48,24 +48,32 @@ skillsHeader.forEach((element) => {
 
 
 /*==================== QUALIFICATION ====================*/
-const tabs = document.querySelectorAll("[data-target]")
-tabContents = document.querySelectorAll("[data-content]")
+const tabs = document.querySelectorAll("[data-target]");
+const tabContents = document.querySelectorAll("[data-content]");
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const target = document.querySelector(tab.dataset.target);
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = document.querySelector(tab.dataset.target);
 
-        tabContents.forEach(tabContent => {
-            tabContent.classList.remove('qualification_active');
-        })
-        target.classList.add('qualification_active');
+    // Remove active class from all tab contents
+    tabContents.forEach((tabContent) => {
+      tabContent.classList.remove("qualification_active");
+    });
 
-        tab.forEach(tab => {
-            tab.classList.remove('qualification_active');
-        })
-        tab.classList.add('qualification_active');
-    })
-})
+    // Add active class to the targeted content
+    target.classList.add("qualification_active");
+
+    // Remove active class from all tabs
+    tabs.forEach((tab) => {
+      tab.classList.remove("qualification_active");
+    });
+
+    // Add active class to the clicked tab
+    tab.classList.add("qualification_active");
+  });
+});
+
+
 
 
 
