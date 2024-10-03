@@ -1173,3 +1173,117 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+
+#tictac {
+          
+    display: -webkit-box;
+      
+    display: -ms-flexbox;
+      
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: aliceblue;
+    padding-top: 100px;
+    /* justify-content: center; */
+    /* height: 100vh; */
+  } 
+  .board {
+    display:-ms-grid;
+    display:grid;
+    -ms-grid-columns: 100px 4px 100px 4px 100px;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 4px;
+    padding: 5px;
+    margin: 20px auto;
+    
+    
+  }
+  .cell {
+    width: 100px;
+    height: 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 24px;
+    border: 1px solid #fcfcfc;
+    cursor: crosshair;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+  }
+
+
+  /* .cell:hover {
+    background-color: #f57a4d; 
+} */
+  
+
+  .start-game-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--first-color-alt);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s; /* Transition for smooth effect */
+  }
+  
+  .start-game-btn:hover {
+    background-color: var(--first-color-alt);
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
+  
+  .start-game-btn:active {
+    transform: scale(0.95); /* Shrink button slightly when pressed */
+  }
+
+
+
+  
+/* Tic Tac Toe Styles */
+.cell {
+    border: 1px solid var(--text-color); /* Change border based on theme */
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: var(--first-color-second); /* Adjust hover color */
+}
+
+.start-game-btn {
+    background-color: var(--first-color-alt);
+    color: white; /* Button text color */
+}
+
+
+
+/* Adjust for dark theme */
+body.dark-theme .start-game-btn {
+    background-color: var(--first-color-alt);
+    color:black;
+}
+
+/* Default cell color for light theme */
+.cell {
+    color: black; /* Ensure visibility in light theme */
+}
+
+/* Override cell color for dark theme */
+body.dark-theme .cell {
+    color: white; 
+
+}
+
