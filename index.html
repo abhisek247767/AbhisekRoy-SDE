@@ -13,6 +13,13 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link
+      rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
   </head>
 
   <body>
@@ -61,6 +68,12 @@
             <li class="nav_item">
               <a href="#tictac" class="nav_link">
                 <i class="uil uil-graph-bar nav_icon"></i> Beat me
+              </a>
+            </li>
+
+            <li class="nav_item">
+              <a href="#testimonial-section" class="nav_link">
+                <i class="uil uil-graph-bar nav_icon"></i> Testimonials
               </a>
             </li>
 
@@ -900,15 +913,116 @@
 
       <section>
         <div class="tictac-content" id="tictac">
-          <h1>Beat me at this<b style="color: rgb(245, 122, 77); font-size: 28px;">;</b></h1>
-          <button class="start-game-btn" onclick="startGame()">Start Game</button>
+          <h1>
+            Beat me at this<b style="color: rgb(245, 122, 77); font-size: 28px"
+              >;</b
+            >
+          </h1>
+          <button class="start-game-btn" onclick="startGame()">
+            Start Game
+          </button>
           <div class="board" id="board"></div>
           <p id="turn-info"></p>
           <script src="./script/script.js"></script>
         </div>
       </section>
-    
-    
+
+      <section class="testimonial-section" id="testimonial-section">
+        <h1 class="testimonial-title">Testimonials</h1>
+        <div class="testimonial-container">
+          <figure class="testimonial-card">
+            <img
+              src="images/Arindam.png"
+              alt="Arindam Mukhopadhyay"
+              class="profile"
+            />
+
+            <figcaption>
+              <h2>Arindam Mukhopadhyay</h2>
+              <a
+                href="https://in.linkedin.com/in/arindam-sr-director"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline"
+              >
+                <i
+                  class="fa fa-linkedin-square"
+                  style="font-size: 24px; color: #4379f2"
+                ></i>
+              </a>
+              <h4>Senior Director @InterraIT</h4>
+              <blockquote>
+                Abhisek joined me directly from college. He geared up
+                excellently well. I find him highly proficient in Java, Spring
+                MVC, Spring Boot, and Angular. He is a very adaptive person and
+                is initiative-taking in understanding project requirements and
+                committed to delivering excellent results.I am sure he will
+                continue to thrive in his career.
+              </blockquote>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <img
+              src="images/subrato.png"
+              alt="Subrata Kumar Das"
+              class="profile"
+            />
+            <figcaption>
+              <h2 style="display: inline-block; margin-right: 10px">
+                Subrata Kumar Das
+              </h2>
+              <a
+                href="https://www.linkedin.com/in/subrata-kumar-das-3338aa29/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline"
+              >
+                <i
+                  class="fa fa-linkedin-square"
+                  style="font-size: 24px; color: #4379f2"
+                ></i>
+              </a>
+              <h4>Technical Lead @InterraIT</h4>
+              <blockquote>
+                Abhisek has good technical skills and always delivers his work
+                ahead of schedule. He is a very sincere, hardworking, and
+                communicative person. He also demonstrated his ownership in some
+                of the projects. He will be a valuable asset to any
+                organisation.
+              </blockquote>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <img src="images/sutirtho.png" alt="Sutirtho" class="profile" />
+            <figcaption>
+              <h2>Sutirtho Ghosh</h2>
+              <a
+                href="https://in.linkedin.com/in/sutirtho-ghosh"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline"
+              >
+                <i
+                  class="fa fa-linkedin-square"
+                  style="font-size: 24px; color: #4379f2"
+                ></i>
+              </a>
+              <h4>Senior Customer Success Director</h4>
+              <blockquote>
+                I've had the pleasure of knowing Abhisek since I joined
+                InterraIT, and I'm consistently impressed by his technical
+                expertise and versatility as a software developer. He has a
+                strong command of various technologies including Java, Node.js,
+                React and Angular. Though I haven't worked directly with him,
+                I've observed his work and contributions across the
+                organization.
+              </blockquote>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
       <!-- ========== Contact ========== -->
       <section class="contact section" id="contact">
