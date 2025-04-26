@@ -488,10 +488,22 @@ img {
     margin-bottom: var(--mb-1);
 }
 
-.qualification_calender {
+.qualification_info {
+    display: flex;
+    gap: 1rem; 
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  
+  .qualification_calender,
+  .qualification_marks {
     font-size: var(--smaller-font-size);
     color: var(--text-color-light);
-}
+    display: flex;
+    align-items: center;
+    gap: 0.3rem; 
+  }
+  
 
 .qualification_rounder {
     display: inline-block;
