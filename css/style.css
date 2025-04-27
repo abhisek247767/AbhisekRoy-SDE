@@ -139,12 +139,12 @@ img {
 
 /* =========== Reusable Css Classes ========== */
 .section {
-    padding: 2rem 0 4rem;
+    padding: 3rem 0 3rem;
 }
 
 .section_title {
     font-size: var(--h1-font-size);
-    margin-bottom: var(--mb-2);
+    margin-bottom: var(--mb-1);
 }
 
 .section_subtitle {
@@ -225,7 +225,7 @@ img {
         transition: 0.3sec;
     }
 
-    
+
 }
 
 .nav_list {
@@ -313,7 +313,7 @@ img {
 
 .home_blob-img {
     width: 100%;
-    margin:auto
+    margin: auto
 }
 
 .home_data {
@@ -334,7 +334,7 @@ img {
 
 .home_description {
     margin-bottom: var(--mb-2);
-   
+
 }
 
 .home_scroll {
@@ -490,20 +490,20 @@ img {
 
 .qualification_info {
     display: flex;
-    gap: 1rem; 
+    gap: 1rem;
     align-items: center;
     margin-top: 0.5rem;
-  }
-  
-  .qualification_calender,
-  .qualification_marks {
+}
+
+.qualification_calender,
+.qualification_marks {
     font-size: var(--smaller-font-size);
     color: var(--text-color-light);
     display: flex;
     align-items: center;
-    gap: 0.3rem; 
-  }
-  
+    gap: 0.3rem;
+}
+
 
 .qualification_rounder {
     display: inline-block;
@@ -739,6 +739,19 @@ img {
 .swiper-pagination-bullet {
     outline: none;
 }
+
+.swiper-scrollbar {
+    display: none !important;
+}
+
+.testimonial-swiper {
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 
 
 
@@ -1164,7 +1177,7 @@ img {
         right: -3.5rem;
     }
 
-    .swiper-container-horizontal > .swiper-pagination-bullets {
+    .swiper-container-horizontal>.swiper-pagination-bullets {
         bottom: -4.5rem;
     }
 
@@ -1188,61 +1201,65 @@ img {
 
 
 #tictac {
-          
+
     display: -webkit-box;
-      
+
     display: -ms-flexbox;
-      
+
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     color: aliceblue;
     padding-top: 100px;
     /* justify-content: center; */
     /* height: 100vh; */
-  } 
-  .board {
-    display:-ms-grid;
-    display:grid;
+}
+
+.board {
+    display: -ms-grid;
+    display: grid;
     -ms-grid-columns: 100px 4px 100px 4px 100px;
     grid-template-columns: repeat(3, 100px);
     grid-gap: 4px;
     padding: 5px;
     margin: 20px auto;
-    
-    
-  }
-  .cell {
+
+
+}
+
+.cell {
     width: 100px;
     height: 100px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     font-size: 24px;
     border: 1px solid #fcfcfc;
     cursor: crosshair;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover */
-  }
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover */
+}
 
 
-  /* .cell:hover {
+/* .cell:hover {
     background-color: #f57a4d; 
 } */
-  
 
-  .start-game-btn {
+
+.start-game-btn {
     padding: 10px 20px;
     font-size: 16px;
     background-color: var(--first-color-alt);
@@ -1250,34 +1267,40 @@ img {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s; /* Transition for smooth effect */
-  }
-  
-  .start-game-btn:hover {
+    transition: background-color 0.3s, transform 0.2s;
+    /* Transition for smooth effect */
+}
+
+.start-game-btn:hover {
     background-color: var(--first-color-alt);
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-  }
-  
-  .start-game-btn:active {
-    transform: scale(0.95); /* Shrink button slightly when pressed */
-  }
+    transform: scale(1.05);
+    /* Slightly enlarge button on hover */
+}
+
+.start-game-btn:active {
+    transform: scale(0.95);
+    /* Shrink button slightly when pressed */
+}
 
 
 
-  
+
 /* Tic Tac Toe Styles */
 .cell {
-    border: 1px solid var(--text-color); /* Change border based on theme */
+    border: 1px solid var(--text-color);
+    /* Change border based on theme */
     transition: background-color 0.3s;
 }
 
 .cell:hover {
-    background-color: var(--first-color-second); /* Adjust hover color */
+    background-color: var(--first-color-second);
+    /* Adjust hover color */
 }
 
 .start-game-btn {
     background-color: var(--first-color-alt);
-    color: white; /* Button text color */
+    color: white;
+    /* Button text color */
 }
 
 
@@ -1285,17 +1308,18 @@ img {
 /* Adjust for dark theme */
 body.dark-theme .start-game-btn {
     background-color: var(--first-color-alt);
-    color:black;
+    color: black;
 }
 
 /* Default cell color for light theme */
 .cell {
-    color: black; /* Ensure visibility in light theme */
+    color: black;
+    /* Ensure visibility in light theme */
 }
 
 /* Override cell color for dark theme */
 body.dark-theme .cell {
-    color: white; 
+    color: white;
 
 }
 
@@ -1322,10 +1346,11 @@ body.dark-theme .cell {
 
 .testimonial-card {
     background-color: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    width: 300px;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    max-width: 350px;
+    margin: auto;
     position: relative;
     overflow: hidden;
     transition: transform 0.3s;
@@ -1360,4 +1385,3 @@ body.dark-theme .cell {
     margin-bottom: 10px;
     border: 3px solid var(--title-color);
 }
-
