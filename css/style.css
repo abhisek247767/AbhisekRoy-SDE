@@ -1385,3 +1385,29 @@ body.dark-theme .cell {
     margin-bottom: 10px;
     border: 3px solid var(--title-color);
 }
+
+.tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            background:var(--first-color);
+
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(197, 71, 17, 0.4);
+        }
