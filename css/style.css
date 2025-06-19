@@ -713,9 +713,16 @@ img {
 }
 
 .portfolio_img {
-    height: 200px;
-    border-radius: 0.5rem;
+    width: 100%;
+    max-height: 200px;
+    min-height: 200px;
     justify-self: center;
+    object-fit: cover;
+    object-position: center;
+    background-color: #f5f5f5;
+}
+.portfolio_img:hover {
+    transform: scale(1.05);
 }
 
 .portfolio_title {
