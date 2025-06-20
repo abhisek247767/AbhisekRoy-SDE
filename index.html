@@ -220,6 +220,38 @@
               my favorite hobbies: playing outdoor games like cricket and
               football, which help me stay active and balanced.
             </p>
+            <h3 class="section_subtitle">What I Do</h3>
+
+            <div class="about_boxes">
+              <div class="about_box">
+                <p class="about_box-content">
+                  Develop full-stack applications, working on both frontend
+                  (HTML, CSS, JavaScript, React, Angular) and backend (Node.js,
+                  SpringBoot) based on project requirements.
+                </p>
+              </div>
+              <div class="about_box">
+                <p class="about_box-content">
+                  Collaborate with frontend, backend teams, UI/UX designers, and
+                  stakeholders to ensure seamless integration, functionality,
+                  and alignment with business goals.
+                </p>
+              </div>
+              <div class="about_box">
+                <p class="about_box-content">
+                  Write comprehensive unit tests to cover every new feature,
+                  ensuring reliability and reducing bugs while following CI/CD
+                  pipelines for efficient deployments.
+                </p>
+              </div>
+              <div class="about_box">
+                <p class="about_box-content">
+                  Optimize application performance, implement best practices in
+                  coding standards, and ensure scalability, security, and
+                  maintainability across the stack.
+                </p>
+              </div>
+            </div>
             <div class="about_info">
               <div>
                 <span class="about_info-title">2+</span>
@@ -290,7 +322,7 @@
                     <span class="qualification_line"></span>
                   </div>
                   <div>
-                    <h3 class="qualification_title">Software Developer</h3>
+                    <h3 class="qualification_title">Software Engineer</h3>
                     <span class="qualification_subtitle"
                       >Radiant Sage ventures
                     </span>
@@ -621,6 +653,17 @@
                     <span class="skills_percentage skills_autocad"></span>
                   </div>
                 </div>
+
+                <div class="skills_data">
+                  <div class="skills_titles">
+                    <h3 class="skills_name">Generative AI</h3>
+                    <span class="skills_number"></span>
+                  </div>
+                  <div class="skills_bar">
+                    <span class="skills_percentage skills_autocad"></span>
+                  </div>
+                </div>
+
                 <div class="skills_data">
                   <div class="skills_titles">
                     <h3 class="skills_name">AWS</h3>
@@ -633,7 +676,7 @@
 
                 <div class="skills_data">
                   <div class="skills_titles">
-                    <h3 class="skills_name">Redux</h3>
+                    <h3 class="skills_name">Redux, Zustand</h3>
                     <span class="skills_number"></span>
                   </div>
                   <div class="skills_bar">
@@ -732,45 +775,105 @@
 
       <!-- ========== Projects ========== -->
       <section class="portfolio section" id="projects">
-        <h2 class="section_title">Latest Projects</h2>
+        <h2 class="section_title">Recent Projects</h2>
 
         <div class="portfolio_container container swiper-container">
           <div class="swiper-wrapper">
-            <!-- ========== Project 1 ========== -->
+            <!-- ========== Project 0 ========== -->
             <div
               class="portfolio_content grid swiper-slide project-card"
               class="project-card"
             >
-              <img src="images/blog.jpg" alt="" class="portfolio_img" />
+              <img src="images/RecipeAI.jpg" alt="" class="portfolio_img" />
 
               <div class="portfolio_data">
-                <h3 class="portfolio_title project_title">
-                  Blog Post Application
-                </h3>
+                <h3 class="portfolio_title project_title">Recipe AI</h3>
                 <p
                   class="portfolio_description project-tech-stack project-description"
                 >
-                  Individual project, done within the span of 4 days. <br />
-                  Tech Stack - HTML | CSS | JavaScript | NodeJS | ExpressJS.
-                  <br />
-                  Features: Sign up/Log in pages | Create Post | Users can
-                  comment or like on the post | Follow/Unfollow the User |
-                  Multiple filters | Sort features | Delete or modify post or
-                  comment after posting.
+                  Recipe AI is an AI powered application where users sign
+                  up/sign in via OTP verification, create recipes using simple
+                  prompts, save favorites, and delete recipes as needed. It
+                  simplifies recipe generation and management for cooking
+                  enthusiasts.
+                  <!-- <br />
+                  TechStack: NodeJS| ReactJS | Tailwind CSS | Generative AI
+                  (Google Gemini AI) | MongoDB | ExpressJS | JWT -->
                 </p>
+                <div class="tech-icons">
+                  <span class="tech-icon">NodeJS</span>
+                  <span class="tech-icon">ReactJS</span>
+                  <span class="tech-icon">Tailwind CSS</span>
+                  <span class="tech-icon">gemini-2.0-flash Models</span>
+                  <span class="tech-icon">MongoDB</span>
+                </div>
                 <a
-                  href="https://github.com/abhisek247767/Spyne_Assignment"
+                  href="https://github.com/abhisek247767/Cold-Email-Application"
                   target="_blank"
                   class="project-github-link button button-flex button-small portfolio_button"
                 >
                   Git Repo.
                   <i class="uil uil-github-alt button_icon"></i>
                 </a>
-                <!-- <a href="https://rad-manatee-0e439b.netlify.app/" target="_blank"
-                                class="button button-flex button-small portfolio_button project-deployed-link">
-                                Deployed
-                                <i class="uil uil-external-link-alt button_icon"></i>
-                            </a> -->
+                <a
+                  href="https://dish-genius-frontend.vercel.app/home"
+                  target="_blank"
+                  class="button button-flex button-small portfolio_button project-deployed-link"
+                >
+                  Deployed
+                  <i class="uil uil-external-link-alt button_icon"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- ========== Project 1 ========== -->
+            <div
+              class="portfolio_content grid swiper-slide project-card"
+              class="project-card"
+            >
+              <img src="images/clarityNotes.jpg" alt="" class="portfolio_img" />
+
+              <div class="portfolio_data">
+                <h3 class="portfolio_title project_title">
+                  Clarity Note Application
+                </h3>
+                <p
+                  class="portfolio_description project-tech-stack project-description"
+                >
+                  Clarity Note is a note-taking app where users create,
+                  categorize (Work, Study, Personal, All), search, edit, and
+                  delete notes. Notes can be marked as complete and filtered by
+                  status (e.g., pending/done) for better organization.
+                  <!-- <br />
+                  Tech Stack - React | TypeScript | Chakra UI | NodeJS |
+                  ExpressJS | JWT.
+                  <br /> -->
+                </p>
+
+                <div class="tech-icons">
+                  <span class="tech-icon">React</span>
+                  <span class="tech-icon">JavaScript</span>
+                  <span class="tech-icon">Chakra UI</span>
+                  <span class="tech-icon">NodeJS</span>
+                  <span class="tech-icon">ExpressJS</span>
+                  <span class="tech-icon">TypeScript</span>
+                </div>
+                <a
+                  href="https://github.com/abhisek247767/Spyne_Assignment"
+                  target="_blank"
+                  class="project-github-link button button-flex button-small portfolio_button"
+                >
+                  Git Repo
+                  <i class="uil uil-github-alt button_icon"></i>
+                </a>
+                <a
+                  href="https://clarity-note-application.vercel.app/"
+                  target="_blank"
+                  class="button button-flex button-small portfolio_button project-deployed-link"
+                >
+                  Deployed
+                  <i class="uil uil-external-link-alt button_icon"></i>
+                </a>
               </div>
             </div>
 
@@ -788,28 +891,33 @@
                 <p
                   class="portfolio_description project-tech-stack project-description"
                 >
-                  ShopClues is an Indian online marketplace that was founded in
-                  2011. <br />
-                  Tech Stack - HTML | CSS | TypeScript | Angular | SpringBoot
-                  <br />
-                  A Individual project built by a team of four <br />
-                  <!-- Responsibility - Landing Page, Header & Footer <br> -->
-                  Features: Sign up/Sign in pages | Men page | Filter
-                  functionality | Product Description
+                  Product Manager is an app that lets users securely add, edit,
+                  and delete products with details like name, description,
+                  price, and image URL. All data is stored safely in an
+                  encrypted database for secure access.
                 </p>
+                <div class="tech-icons">
+                  <span class="tech-icon">Angular</span>
+                  <span class="tech-icon">TypeScript</span>
+                  <span class="tech-icon">Java</span>
+                  <span class="tech-icon">SpringBoot</span>
+                </div>
                 <a
-                  href="https://github.com/abhisek247767/MoEngage-hackathon"
+                  href="https://github.com/abhisek247767/Product-Management-Application"
                   target="_blank"
                   class="project-github-link button button-flex button-small portfolio_button"
                 >
                   Git Repo.
                   <i class="uil uil-github-alt button_icon"></i>
                 </a>
-                <!-- <a href="https://spotty-butter-9254.netlify.app/" target="_blank"
-                                class="button button-flex button-small portfolio_button project-deployed-link">
-                                Deployed
-                                <i class="uil uil-external-link-alt button_icon"></i>
-                            </a> -->
+                <a
+                  href="https://product-management-application-1.onrender.com/"
+                  target="_blank"
+                  class="button button-flex button-small portfolio_button project-deployed-link"
+                >
+                  Deployed
+                  <i class="uil uil-external-link-alt button_icon"></i>
+                </a>
               </div>
             </div>
 
@@ -818,36 +926,40 @@
               class="portfolio_content grid swiper-slide project-card"
               class="project-card"
             >
-              <img src="images/Doctor.jpg" alt="" class="portfolio_img" />
+              <img src="images/inspiro.jpg" alt="" class="portfolio_img" />
 
               <div class="portfolio_data">
                 <h3 class="portfolio_title project_title">
-                  Doctor's Appointment Application
+                  Inspiro Application
                 </h3>
                 <p
                   class="portfolio_description project-tech-stack project-description"
                 >
-                  It allows managing doctors and patients, and provides an
-                  endpoint to suggest doctors based on a patient's symptoms and
-                  location. <br />
-                  Tech Stack: SpringBoot | MySQL | TypeScript | Angular. <br />
-                  Features: Login/Signup using JWT | Add Doctors , Patients| Add
-                  to cart functionality | Payment page | Suggest Doctors Based
-                  on location and disease.
+                  Inspiro is an application, displays a random inspirational
+                  quote every time you visit or interact with the page.
                 </p>
+                <div class="tech-icons">
+                  <span class="tech-icon">Java</span>
+                  <span class="tech-icon">SpringBoot</span>
+                  <span class="tech-icon">Tailwind CSS</span>
+                  <span class="tech-icon">Maven</span>
+                </div>
                 <a
-                  href="https://github.com/abhisek247767/Doctor-Patient-API"
+                  href="https://github.com/abhisek247767/QuoteApplication"
                   target="_blank"
                   class="project-github-link button button-flex button-small portfolio_button"
                 >
                   Git Repo.
                   <i class="uil uil-github-alt button_icon"></i>
                 </a>
-                <!-- <a href="https://iridescent-klepon-924758.netlify.app/" target="_blank"
-                                class="button button-flex button-small portfolio_button project-deployed-link">
-                                Deployed
-                                <i class="uil uil-external-link-alt button_icon"></i>
-                            </a> -->
+                <a
+                  href="https://inspiro.up.railway.app/"
+                  target="_blank"
+                  class="button button-flex button-small portfolio_button project-deployed-link"
+                >
+                  Deployed
+                  <i class="uil uil-external-link-alt button_icon"></i>
+                </a>
               </div>
             </div>
 
@@ -865,17 +977,19 @@
                 <p
                   class="portfolio_description project-tech-stack project-description"
                 >
-                  In this project, we identify the pattern of urbanization in
+                 Identify the pattern of urbanization in
                   the Newtown, Kolkata area using satellite images and various
-                  indexes. By analyzing these indexes, including the Normalized
-                  Difference Built-up Index (NDBI), Normalized Difference Water
-                  Index (NDWI), Normalized Difference Vegetation Index (NDVI),
-                  and electricity usage data, we can accurately predict and
+                  indexes. By analyzing these indexes, we can accurately predict and
                   visualize the patterns of urbanization over time. These
                   insights can have significant implications for urban planning
-                  and policy-making, providing valuable data for future
-                  development strategies.
+                  and policy-making.
                 </p>
+                <div class="tech-icons">
+                  <span class="tech-icon">Image Processing</span>
+                  <span class="tech-icon">Python</span>
+                  <span class="tech-icon">Data Analysis</span>
+                  <span class="tech-icon">Remote Sensing</span>
+                </div>
                 <a
                   href="https://github.com/abhisek247767/FinalYearProject2.0"
                   target="_blank"
@@ -884,49 +998,14 @@
                   Git Repo.
                   <i class="uil uil-github-alt button_icon"></i>
                 </a>
-                <!-- <a href="https://mellow-semifreddo-68e65b.netlify.app/" target="_blank"
-                                class="button button-flex button-small portfolio_button project-deployed-link">
-                                Deployed
-                                <i class="uil uil-external-link-alt button_icon"></i>
-                            </a> -->
-              </div>
-            </div>
-
-            <!-- ========== Project 5 ========== -->
-            <div
-              class="portfolio_content grid swiper-slide project-card"
-              class="project-card"
-            >
-              <img src="images/coldEmail.jpg" alt="" class="portfolio_img" />
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title project_title">
-                  Cold-Email-Application
-                </h3>
-                <p
-                  class="portfolio_description project-tech-stack project-description"
-                >
-                  A cold email application automates the process of sending
-                  unsolicited emails to potential customers or leads. It
-                  schedules and manages email sequences to engage with
-                  recipients, typically for marketing or outreach purposes,
-                  using personalized messages and follow-up sequences to
-                  maximize response rates. <br />
-                  TechStack: NodeJS| React| HTML| CSS | JavaScript
-                </p>
                 <a
-                  href="https://github.com/abhisek247767/Cold-Email-Application"
+                  href="https://royabhisek083.medium.com/exploring-spatio-temporal-urbanization-patterns-using-satellite-data-278b8c8a46ff"
                   target="_blank"
-                  class="project-github-link button button-flex button-small portfolio_button"
+                  class="button button-flex button-small portfolio_button project-deployed-link"
                 >
-                  Git Repo.
-                  <i class="uil uil-github-alt button_icon"></i>
+                  Deployed
+                  <i class="uil uil-external-link-alt button_icon"></i>
                 </a>
-                <!-- <a href="https://lustrous-pegasus-3c783f.netlify.app/" target="_blank"
-                                class="button button-flex button-small portfolio_button project-deployed-link">
-                                Deployed
-                                <i class="uil uil-external-link-alt button_icon"></i>
-                            </a> -->
               </div>
             </div>
           </div>
