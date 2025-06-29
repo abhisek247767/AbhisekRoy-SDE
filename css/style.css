@@ -763,7 +763,7 @@ img {
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets {
-    bottom: -1.5rem;
+    bottom: -2.5rem;
 }
 .swiper-pagination {
   z-index: 0 !important;
