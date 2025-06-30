@@ -331,3 +331,52 @@ function checkWin(board) {
 
   return null;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("my-form");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const status = document.getElementById("my-form-status");
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        status.innerHTML =
+          "Thanks for your submission. I'll get back to you soon!";
+        form.reset();
+        setTimeout(() => {
+          status.innerHTML = "";
+        }, 5000);
+      } else {
+        const resData = await response.json();
+        if (resData.errors) {
+          status.innerHTML = resData.errors
+            .map((error) => error.message)
+            .join(", ");
+        } else {
+          status.innerHTML =
+            "Oops! There was a problem submitting your form. Try again later.";
+        }
+      }
+    } catch (error) {
+      status.innerHTML =
+        "Oops! There was a problem submitting your form. Try again later.";
+      setTimeout(() => {
+        status.innerHTML = "";
+      }, 3000);
+    }
+  }
+
+  if (form) {
+    form.addEventListener("submit", handleSubmit);
+  }
+});
