@@ -910,7 +910,7 @@ body {
 /* ====== SCROLL UP ====== */
 .scrollup {
     position: fixed;
-    right: 1rem;
+    left: 1rem;
     bottom: -20%;
     background-color: var(--first-color);
     opacity: 0.8;
@@ -1449,4 +1449,35 @@ body.dark-theme .cell {
 .tech-icon:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(197, 71, 17, 0.4);
+}
+
+/* ====== COMMAND PROMPT BUTTON ====== */
+.cmd-prompt {
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    background-color: var(--first-color);
+    opacity: 0.8;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    z-index: var(--z-tooltip);
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmd-prompt:hover {
+    background-color: var(--first-color-alt);
+    opacity: 1;
+}
+
+.cmd-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* Makes icon white */
+}
+
+.show-cmd {
+    bottom: 5rem;
 }
