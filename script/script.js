@@ -380,3 +380,12 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", handleSubmit);
   }
 });
+
+window.addEventListener('scroll', function() {
+    const cmdPrompt = document.getElementById('cmd-prompt');
+    if(this.scrollY >= 200) {
+        cmdPrompt.classList.add('show-cmd');
+    } else {
+        cmdPrompt.classList.remove('show-cmd');
+    }
+});
