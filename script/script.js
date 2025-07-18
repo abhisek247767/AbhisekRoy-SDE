@@ -383,7 +383,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.addEventListener('scroll', function() {
     const cmdPrompt = document.getElementById('cmd-prompt');
-    if(this.scrollY >= 200) {
+    if(this.scrollY >= 560) {
         cmdPrompt.classList.add('show-cmd');
     } else {
         cmdPrompt.classList.remove('show-cmd');
