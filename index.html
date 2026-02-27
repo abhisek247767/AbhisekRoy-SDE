@@ -1457,14 +1457,41 @@
       <i class="uil uil-arrow-up scrollup_icon"></i>
     </a>
 
+    <!-- ========== RAG Chatbot Widget ========== -->
+    <div id="rag-chat-widget" class="rag-chat-widget">
+      <button id="rag-chat-toggle" class="rag-chat-toggle" aria-label="Chat with Abhisek's AI">
+        <i class="uil uil-message"></i>
+      </button>
+      <div id="rag-chat-panel" class="rag-chat-panel">
+        <div class="rag-chat-header">
+          <span>Chat with Abhisek's AI</span>
+        </div>
+        <div id="rag-chat-messages" class="rag-chat-messages"></div>
+        <div id="rag-chat-status" class="rag-chat-status"></div>
+        <form id="rag-chat-form" class="rag-chat-form">
+          <input
+            id="rag-chat-input"
+            class="rag-chat-input"
+            type="text"
+            placeholder="Ask about Abhisek, his skills, or experience..."
+            autocomplete="off"
+          />
+          <button type="submit" class="rag-chat-send">
+            <i class="uil uil-message"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <a href="https://personacli.netlify.app/" target="_blank" class="cmd-prompt" id="cmd-prompt">
-  <img src="images/terminal (2).png" alt="Terminal" class="cmd-icon">
-</a>
+      <img src="images/terminal (2).png" alt="Terminal" class="cmd-icon">
+    </a>
 
     <!-- ==================== JAVASCRIPT CODE ==================== -->
     <script src="script/script.js"></script>
     <script src="script/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+    <script src="script/chat.js"></script>
 
     <script>
       var swiper = new Swiper(".testimonial-swiper", {
