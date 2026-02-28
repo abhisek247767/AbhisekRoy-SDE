@@ -15,13 +15,18 @@ function isInitialized() {
 }
 
 async function initializeRag(pdfFilePath) {
+  try {
   const absolutePdfPath = path.resolve(pdfFilePath);
   const pdfText = await loadPdfText(absolutePdfPath);
 
-  const chunks = chunkText(pdfText, 1000, 200);
+    const chunks = chunkText(pdfText, 1000, 200);
 
-  embeddingsStore = await loadOrCreateEmbeddingsStore(chunks);
-  initialized = true;
+    embeddingsStore = await loadOrCreateEmbeddingsStore(chunks);
+    initialized = true;
+  } catch (error) {
+    console.error('Error initializing RAG:', error);
+    throw new Error('Failed to initialize RAG');
+  }
 }
 
 async function getAnswerForQuery(message, history) {

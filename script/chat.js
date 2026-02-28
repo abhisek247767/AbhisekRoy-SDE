@@ -4,7 +4,7 @@
 
 (function () {
   const API_BASE_URL =
-    window.RAG_CHAT_API_BASE_URL || 'http://localhost:4000';
+    window.RAG_CHAT_API_BASE_URL || 'http://localhost:3000';
 
   const widget = document.getElementById('rag-chat-widget');
   if (!widget) return;

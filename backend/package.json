@@ -8,6 +8,7 @@
     "dev": "NODE_ENV=development node server.js"
   },
   "dependencies": {
+    "@google/genai": "^1.43.0",
     "axios": "^1.7.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.0",
@@ -15,5 +16,3 @@
     "pdf-parse": "^1.1.1"
   }
 }
-
-
