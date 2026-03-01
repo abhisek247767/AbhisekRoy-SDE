@@ -1508,10 +1508,18 @@ body.dark-theme .cell {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background-color 0.2s ease;
+  position: relative;
 }
 
 .rag-chat-toggle i {
   font-size: 1.4rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rag-chat-toggle-icon-open,
+.rag-chat-toggle-icon-close {
+  position: absolute;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .rag-chat-toggle:hover {
@@ -1525,26 +1533,115 @@ body.dark-theme .cell {
 }
 
 .rag-chat-panel {
-  width: 320px;
-  max-height: 420px;
-  background-color: var(--container-color);
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: var(--container-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  display: flex;
   flex-direction: column;
+  overflow: hidden;
+  
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 .rag-chat-panel-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
   display: flex;
+}
+
+.rag-chat-panel-minimized {
+  display: none;
 }
 
 .rag-chat-header {
   padding: 0.75rem 1rem;
-  background: var(--first-color);
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
   color: #fff;
   font-weight: var(--font-semi-bold);
   font-size: var(--small-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rag-chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rag-chat-clear {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: var(--smaller-font-size);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.rag-chat-clear:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.rag-chat-minimize {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rag-chat-minimize:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rag-chat-bubble {
+  max-width: 80%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 1rem;
+  font-size: var(--small-font-size);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.rag-chat-message-user .rag-chat-bubble {
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+  color: #fff;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.rag-chat-message-bot .rag-chat-bubble {
+  background-color: var(--input-color);
+  color: var(--text-color);
+  border-bottom-left-radius: 0.3rem;
 }
 
 .rag-chat-messages {
@@ -1554,9 +1651,51 @@ body.dark-theme .cell {
   background-color: var(--body-color);
 }
 
+/* Typing Indicator */
+.rag-chat-typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  justify-content: flex-start;
+}
+
+.rag-chat-typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--text-color-light);
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.rag-chat-typing-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.rag-chat-typing-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.rag-chat-typing-dot:nth-child(3) {
+  animation-delay: 0;
+}
+
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .rag-chat-message {
   display: flex;
   margin-bottom: 0.5rem;
+  animation: fadeUp 0.3s ease;
 }
 
 .rag-chat-message-user {
@@ -1633,9 +1772,26 @@ body.dark-theme .cell {
   font-size: 1.1rem;
 }
 
-.rag-chat-send:hover {
+.rag-chat-send:hover:not(:disabled) {
   background-color: var(--first-color-alt);
+  transform: scale(1.05);
 }
+
+.rag-chat-send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rag-chat-disabled .rag-chat-input {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rag-chat-disabled .rag-chat-send {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 
 .rag-chat-send:active {
   transform: scale(0.96);

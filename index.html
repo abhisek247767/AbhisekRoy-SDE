@@ -1460,13 +1460,25 @@
     <!-- ========== RAG Chatbot Widget ========== -->
     <div id="rag-chat-widget" class="rag-chat-widget">
       <button id="rag-chat-toggle" class="rag-chat-toggle" aria-label="Chat with Abhisek's AI">
-        <i class="uil uil-message"></i>
+        <i class="uil uil-message rag-chat-toggle-icon-open"></i>
+        <i class="uil uil-times rag-chat-toggle-icon-close" style="display: none;"></i>
       </button>
       <div id="rag-chat-panel" class="rag-chat-panel">
         <div class="rag-chat-header">
           <span>Chat with Abhisek's AI</span>
+          <div class="rag-chat-header-actions">
+            <button id="rag-chat-clear" class="rag-chat-clear" title="Clear chat">Clear</button>
+            <button id="rag-chat-minimize" class="rag-chat-minimize" title="Minimize">
+              <i class="uil uil-minus"></i>
+            </button>
+          </div>
         </div>
         <div id="rag-chat-messages" class="rag-chat-messages"></div>
+        <div id="rag-chat-typing-indicator" class="rag-chat-typing-indicator" style="display: none;">
+          <div class="rag-chat-typing-dot"></div>
+          <div class="rag-chat-typing-dot"></div>
+          <div class="rag-chat-typing-dot"></div>
+        </div>
         <div id="rag-chat-status" class="rag-chat-status"></div>
         <form id="rag-chat-form" class="rag-chat-form">
           <input
@@ -1481,6 +1493,11 @@
           </button>
         </form>
       </div>
+      <!-- Sound notification (will be added later) -->
+      <audio id="rag-chat-notification-sound" preload="auto" style="display: none;">
+        <source src="sounds/message-notification.mp3" type="audio/mpeg">
+        <source src="sounds/message-notification.ogg" type="audio/ogg">
+      </audio>
     </div>
 
     <a href="https://personacli.netlify.app/" target="_blank" class="cmd-prompt" id="cmd-prompt">
