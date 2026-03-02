@@ -1522,6 +1522,24 @@ body.dark-theme .cell {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.rag-chat-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background-color: #ff4d4f;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px var(--body-color);
+}
+
 .rag-chat-toggle:hover {
   background-color: var(--first-color-alt);
   transform: translateY(-2px);
@@ -1571,6 +1589,35 @@ body.dark-theme .cell {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.rag-chat-header-main {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rag-chat-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.rag-chat-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.rag-chat-title {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.rag-chat-subtitle {
+  font-size: var(--smaller-font-size);
+  opacity: 0.85;
 }
 
 .rag-chat-header-actions {
@@ -1728,7 +1775,7 @@ body.dark-theme .cell {
 }
 
 .rag-chat-status {
-  min-height: 1.2rem;
+  /* min-height: 1.2rem; */
   padding: 0 0.9rem;
   font-size: var(--smaller-font-size);
   color: var(--text-color-light);
@@ -1737,8 +1784,8 @@ body.dark-theme .cell {
 .rag-chat-form {
   display: flex;
   align-items: center;
-  padding: 0.4rem 0.4rem 0.6rem;
-  border-top: 1px solid var(--scroll-bar-color);
+  /* padding: 0.4rem 0.4rem 0.6rem; */
+  /* border-top: 1px solid var(--scroll-bar-color); */
   gap: 0.4rem;
 }
 
@@ -1800,6 +1847,34 @@ body.dark-theme .cell {
 .rag-chat-form.rag-chat-disabled {
   opacity: 0.7;
   pointer-events: none;
+}
+
+/* Dark theme tweaks for chat */
+body.dark-theme .rag-chat-panel {
+  background-color: hsl(var(--hue-color), 29%, 16%);
+}
+
+body.dark-theme .rag-chat-messages {
+  background-color: hsl(var(--hue-color), 28%, 12%);
+}
+
+body.dark-theme .rag-chat-message-user .rag-chat-bubble {
+  background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+  color: #fff;
+}
+
+body.dark-theme .rag-chat-message-bot .rag-chat-bubble {
+  background-color: hsl(var(--hue-color), 29%, 24%);
+  color: var(--title-color);
+}
+
+/* body.dark-theme .rag-chat-input {
+  background-color: hsl(var(--hue-color), 28%, 18%);
+  color: var(--title-color);
+} */
+
+body.dark-theme .rag-chat-status {
+  color: var(--text-color-light);
 }
 
 @media screen and (max-width: 480px) {
