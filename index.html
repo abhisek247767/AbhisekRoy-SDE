@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1114,13 +1114,13 @@
         <span class="section_subtitle">My Github Statistics</span>
         <div class="statistics_container container grid">
           <img
-            src="https://github-readme-stats.vercel.app/api?hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=default&locale=en&hide_border=false&username=abhisek247767"
+            src="https://github-stats-extended.vercel.app/api?hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=default&locale=en&hide_border=false&username=abhisek247767"
             height="150"
             alt="stats graph"
             id="github-stats-card"
           />
           <img
-            src="https://github-readme-stats.vercel.app/api/top-langs?locale=en&hide_title=false&layout=compact&card_width=320&langs_count=4&theme=default&hide_border=false&username=abhisek247767&hide=jupyter%20notebook,HTML"
+            src="https://github-stats-extended.vercel.app/api/top-langs?locale=en&hide_title=false&layout=compact&card_width=320&langs_count=4&theme=default&hide_border=false&username=abhisek247767&hide=jupyter%20notebook,HTML"
             height="150"
             alt="languages graph"
             id="github-top-langs"
@@ -1457,14 +1457,99 @@
       <i class="uil uil-arrow-up scrollup_icon"></i>
     </a>
 
-    <a href="https://personacli.netlify.app/" target="_blank" class="cmd-prompt" id="cmd-prompt">
-  <img src="images/terminal (2).png" alt="Terminal" class="cmd-icon">
-</a>
+    <!-- ========== RAG Chatbot Widget ========== -->
+    <div id="rag-chat-widget" class="rag-chat-widget">
+      <button
+        id="rag-chat-toggle"
+        class="rag-chat-toggle"
+        aria-label="Chat with Abhisek's AI"
+      >
+        <i class="uil uil-message rag-chat-toggle-icon-open"></i>
+        <i
+          class="uil uil-times rag-chat-toggle-icon-close"
+          style="display: none"
+        ></i>
+        <span
+          id="rag-chat-badge"
+          class="rag-chat-badge"
+          style="display: none"
+        ></span>
+      </button>
+      <div id="rag-chat-panel" class="rag-chat-panel">
+        <div class="rag-chat-header">
+          <div class="rag-chat-header-main">
+            <img
+              src="images/picture(3).jpg"
+              alt="Abhisek avatar"
+              class="rag-chat-avatar"
+            />
+            <div class="rag-chat-header-text">
+              <span class="rag-chat-title">Chat with Abhisek's AI</span>
+              <span class="rag-chat-subtitle"
+                >Usually replies in a few seconds</span
+              >
+            </div>
+          </div>
+          <div class="rag-chat-header-actions">
+            <!-- <button id="rag-chat-clear" class="rag-chat-clear" title="Clear chat">Clear</button> -->
+            <button
+              id="rag-chat-minimize"
+              class="rag-chat-minimize"
+              title="Minimize"
+            >
+              <i class="uil uil-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div id="rag-chat-messages" class="rag-chat-messages"></div>
+        <div
+          id="rag-chat-typing-indicator"
+          class="rag-chat-typing-indicator"
+          style="display: none"
+        >
+          <div class="rag-chat-typing-dot"></div>
+          <div class="rag-chat-typing-dot"></div>
+          <div class="rag-chat-typing-dot"></div>
+        </div>
+        <div id="rag-chat-status" class="rag-chat-status"></div>
+        <form id="rag-chat-form" class="rag-chat-form">
+          <input
+            id="rag-chat-input"
+            class="rag-chat-input"
+            type="text"
+            placeholder="Ask about Abhisek, his skills, or experience..."
+            autocomplete="off"
+          />
+          <button type="submit" class="rag-chat-send">
+            <i class="uil uil-message"></i>
+          </button>
+        </form>
+      </div>
+      <audio
+        id="rag-chat-notification-sound"
+        preload="auto"
+        style="display: none"
+      >
+        <source src="sounds/message-notification.mp3" type="audio/mpeg" />
+        <source src="sounds/message-notification.ogg" type="audio/ogg" />
+      </audio>
+    </div>
+
+    <a
+      href="https://personacli.netlify.app/"
+      target="_blank"
+      class="cmd-prompt"
+      id="cmd-prompt"
+    >
+      <img src="images/terminal (2).png" alt="Terminal" class="cmd-icon" />
+    </a>
 
     <!-- ==================== JAVASCRIPT CODE ==================== -->
     <script src="script/script.js"></script>
     <script src="script/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+    <script src="script/config/config.js"></script>
+    <script src="script/chat.js"></script>
 
     <script>
       var swiper = new Swiper(".testimonial-swiper", {
