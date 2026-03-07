@@ -1,9 +1,13 @@
+require("dotenv").config();
 const { GoogleGenAI } = require("@google/genai");
+const { systemPrompt, generationConfig } = require("./config/generationConfig");
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_CHAT_MODEL = process.env.GEMINI_CHAT_MODEL;
+const GEMINI_EMBEDDING_MODEL = process.env.GEMINI_EMBEDDING_MODEL;
 
-if (!GEMINI_API_KEY) {
-  console.warn("GEMINI_API_KEY is not set.");
+if (!GEMINI_API_KEY || !GEMINI_CHAT_MODEL || !GEMINI_EMBEDDING_MODEL) {
+  console.warn("One or more required GEMINI environment variables are not set.");
 }
 
 const ai = new GoogleGenAI({
@@ -13,7 +17,7 @@ const ai = new GoogleGenAI({
 async function getEmbeddingForText(text) {
   try {
     const response = await ai.models.embedContent({
-      model: "gemini-embedding-001",
+      model: GEMINI_EMBEDDING_MODEL,
       contents: text,
     });
 
@@ -24,43 +28,13 @@ async function getEmbeddingForText(text) {
   }
 }
 
-const generationConfig = {
-  maxOutputTokens: 300,
-  temperature: 0.5,
-  topP: 0.9,
-  topK: 10,
-  stopSequences: [],
-};
 
-const systemPrompt = `
-You are Abhisek's professional AI assistant, representing him in conversations with recruiters, founders, and collaborators.
 
-Your responsibilities:
-- Explain Abhisek’s skills, experience, and projects clearly and confidently.
-- Highlight measurable impact and real-world business results.
-- Emphasize problem-solving ability and ownership.
-- Maintain a professional, natural, and conversational tone.
-
-Response Guidelines:
-- Use bullet points ONLY when listing multiple skills, achievements, or responsibilities.
-- For short answers, respond naturally in paragraph form.
-- Keep responses concise but impactful.
-- Sound confident, not arrogant.
-- Encourage collaboration naturally when appropriate.
-
-If the question is unrelated to Abhisek, respond:
-"I'm here to provide information about Abhisek's professional background and expertise."
-
-Never:
-- Mention you are an AI model.
-- Fabricate information not present in the provided knowledge base.
-- Over-exaggerate achievements.
-`;
 
 async function generateChatCompletion(userMessage) {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: GEMINI_CHAT_MODEL,
 
       contents: [
         {
