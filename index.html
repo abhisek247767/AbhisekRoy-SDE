@@ -1478,16 +1478,17 @@
       <div id="rag-chat-panel" class="rag-chat-panel">
         <div class="rag-chat-header">
           <div class="rag-chat-header-main">
-            <img
-              src="images/picture(3).jpg"
-              alt="Abhisek avatar"
-              class="rag-chat-avatar"
-            />
+            <div class="rag-chat-avatar-container">
+              <img
+                src="images/picture(3).jpg"
+                alt="Abhisek avatar"
+                class="rag-chat-avatar"
+              />
+              <span class="rag-chat-status-dot"></span>
+            </div>
             <div class="rag-chat-header-text">
               <span class="rag-chat-title">Chat with Abhisek's AI</span>
-              <span class="rag-chat-subtitle"
-                >Usually replies in a few seconds</span
-              >
+              <span class="rag-chat-subtitle">Online • Replies instantly</span>
             </div>
           </div>
           <div class="rag-chat-header-actions">
@@ -1510,8 +1511,13 @@
           <div class="rag-chat-typing-dot"></div>
           <div class="rag-chat-typing-dot"></div>
           <div class="rag-chat-typing-dot"></div>
+          <span class="rag-chat-typing-text">Thinking...</span>
         </div>
-        <div id="rag-chat-status" class="rag-chat-status"></div>
+        <div id="rag-chat-suggestions" class="rag-chat-suggestions">
+          <button class="rag-chat-suggestion">Who is Abhisek?</button>
+          <button class="rag-chat-suggestion">What are his skills?</button>
+          <button class="rag-chat-suggestion">Show projects</button>
+        </div>
         <form id="rag-chat-form" class="rag-chat-form">
           <input
             id="rag-chat-input"

@@ -95,19 +95,36 @@
     isSending = sending;
     if (sending) {
       form.classList.add("rag-chat-disabled");
-      setStatus("Thinking...");
       showTypingIndicator();
     } else {
       form.classList.remove("rag-chat-disabled");
-      setStatus("");
       hideTypingIndicator();
     }
+  }
+
+  function setupSuggestions() {
+    const suggestionsContainer = document.getElementById("rag-chat-suggestions");
+    if (!suggestionsContainer) return;
+
+    suggestionsContainer.addEventListener("click", function (e) {
+      if (e.target.classList.contains("rag-chat-suggestion")) {
+        const question = e.target.textContent;
+        sendMessage(question);
+        suggestionsContainer.style.display = "none";
+      }
+    });
   }
 
   function showWelcomeMessage() {
     // Always show welcome message when opening
     appendMessage("assistant", WELCOME_MESSAGE);
     conversationHistory.push({ role: "assistant", content: WELCOME_MESSAGE });
+    
+    // Show suggestions with welcome message
+    const suggestionsContainer = document.getElementById("rag-chat-suggestions");
+    if (suggestionsContainer) {
+      suggestionsContainer.style.display = "flex";
+    }
   }
 
   function clearChat() {
@@ -263,4 +280,6 @@
   panel.addEventListener("click", function (e) {
     e.stopPropagation();
   });
+
+  setupSuggestions();
 })();
