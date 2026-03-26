@@ -1847,12 +1847,7 @@ body.dark-theme .cell {
   gap: 0.75rem;
 }
 
-.rag-chat-typing-indicator {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0 1rem 0.5rem;
-}
+
 
 .rag-chat-typing-dot {
   width: 0.4rem;
