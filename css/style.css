@@ -898,8 +898,9 @@ body {
 .footer_copy {
     font-size: var(--smaller-font-size);
     text-align: center;
-    color: var(--text-color-light);
+    color: #f5f5f5;
     margin-top: var(--mb-3);
+
 }
 
 .footer_title,
