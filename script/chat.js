@@ -47,6 +47,7 @@
 
   function showTypingIndicator() {
     if (typingIndicator) {
+      messagesEl.appendChild(typingIndicator);
       typingIndicator.style.display = "flex";
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
@@ -110,7 +111,6 @@
       if (e.target.classList.contains("rag-chat-suggestion")) {
         const question = e.target.textContent;
         sendMessage(question);
-        suggestionsContainer.style.display = "none";
       }
     });
   }
@@ -183,6 +183,9 @@
   async function sendMessage(message) {
     if (!message.trim()) return;
     if (isSending) return;
+
+    const suggestionsContainer = document.getElementById("rag-chat-suggestions");
+    if (suggestionsContainer) suggestionsContainer.style.display = "none";
 
     appendMessage("user", message);
     conversationHistory.push({ role: "user", content: message });
