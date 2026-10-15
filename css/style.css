@@ -621,12 +621,28 @@ img {
 }
 
 .skills_bar {
-    background-color: var(--first-color);
+    background-color: var(--first-color-lighter);
 }
 
 .skills_percentage {
     display: block;
     background-color: var(--first-color);
+}
+
+.skills_expert {
+    width: 90%;
+}
+
+.skills_advanced {
+    width: 80%;
+}
+
+.skills_proficient {
+    width: 70%;
+}
+
+.skills_intermediate {
+    width: 60%;
 }
 
 .skills_html {
