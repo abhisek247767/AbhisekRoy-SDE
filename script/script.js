@@ -73,13 +73,20 @@ const sections = document.querySelectorAll("section[id]");
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
+  // The last section may never reach the top, so highlight it at the page bottom
+  const atBottom =
+    window.innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+  const lastSection = sections[sections.length - 1];
 
   sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
     const sectionTop = current.offsetTop - 50;
     const sectionId = current.getAttribute("id");
+    const isActive = atBottom
+      ? current === lastSection
+      : scrollY > sectionTop && scrollY <= sectionTop + sectionHeight;
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    if (isActive) {
       document
         .querySelector(".nav_menu a[href*=" + sectionId + "]")
         .classList.add("active-link");
