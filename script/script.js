@@ -114,6 +114,7 @@ window.addEventListener("scroll", scrollUp);
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
 const iconTheme = "uil-sun";
+const themeSound = new Audio("sounds/popUp.mp3");
 
 // Previously selected topic (if user selected)
 const selectedTheme = localStorage.getItem("selected-theme");
@@ -138,6 +139,9 @@ if (selectedTheme) {
 
 // Activate / deactivate the theme manually with the button
 themeButton.addEventListener("click", () => {
+  // Play the pop sound from the start, even on rapid repeated clicks
+  themeSound.currentTime = 0;
+  themeSound.play().catch(() => {});
   // Add or remove the dark / icon theme
   document.body.classList.toggle(darkTheme);
   themeButton.classList.toggle(iconTheme);
