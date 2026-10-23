@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.reset();
         setTimeout(() => {
           status.innerHTML = "";
-        }, 5000);
+        }, 10000);
       } else {
         const resData = await response.json();
         if (resData.errors) {
