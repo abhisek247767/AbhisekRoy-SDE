@@ -397,6 +397,11 @@ img {
 }
 
 /* ====== ABOUT ====== */
+/* Let the grid column shrink to the screen instead of its content width */
+.about_data {
+    min-width: 0;
+}
+
 .about_img {
     width: 300px;
     border-radius: 1rem;
@@ -824,6 +829,7 @@ body {
 
 .statistics_container img {
     width: 400px;
+    max-width: 100%;
 }
 
 /* ====== CONTANT ====== */
@@ -944,7 +950,6 @@ body {
     left: 1rem;
     bottom: -20%;
     background-color: var(--first-color);
-    opacity: 0.8;
     padding: 0 .3rem;
     border-radius: 0.4rem;
     z-index: var(--z-tooltip);
@@ -1011,6 +1016,32 @@ body {
 
     .qualification_data {
         gap: 0.5rem;
+    }
+}
+
+/* ====== For phones ====== */
+@media screen and (max-width:567px) {
+    .about_box {
+        flex-basis: 100%;
+    }
+
+    .about_info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .portfolio_container .swiper-button-prev,
+    .portfolio_container .swiper-button-next {
+        display: none;
+    }
+
+    .testimonial-section {
+        padding: 50px 1rem;
+    }
+
+    .contact_message br {
+        display: none;
     }
 }
 
@@ -1488,7 +1519,6 @@ body.dark-theme .cell {
     right: 1rem;
     bottom: -20%;
     background-color: var(--first-color);
-    opacity: 0.8;
     padding: 0.5rem;
     border-radius: 0.4rem;
     z-index: var(--z-tooltip);
@@ -1500,7 +1530,6 @@ body.dark-theme .cell {
 
 .cmd-prompt:hover {
     background-color: var(--first-color-alt);
-    opacity: 1;
 }
 
 .cmd-icon {
@@ -1927,10 +1956,14 @@ body.dark-theme .cell {
 .rag-chat-form {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem 0.75rem;
+  background-color: var(--body-color);
 }
 
 .rag-chat-input {
   flex: 1;
+  min-width: 0;
   border-radius: 999px;
   border: none;
   padding: 0.45rem 0.8rem;
@@ -1942,6 +1975,7 @@ body.dark-theme .cell {
 }
 
 .rag-chat-send {
+  flex-shrink: 0;
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 999px;
@@ -2017,10 +2051,175 @@ body.dark-theme .rag-chat-status {
   color: var(--text-color-light);
 }
 
+/* The navbar sits at the bottom below 768px, so lift the chat above it */
+@media screen and (max-width: 767px) {
+  .rag-chat-widget {
+    bottom: calc(var(--header-height) + 1rem);
+  }
+
+  .rag-chat-panel {
+    bottom: calc(var(--header-height) + 5rem);
+    max-height: calc(100vh - var(--header-height) - 7rem);
+    max-height: calc(100dvh - var(--header-height) - 7rem);
+  }
+}
+
+/* Phones: panel spans the screen with a small gutter */
 @media screen and (max-width: 480px) {
   .rag-chat-panel {
-    width: 100%;
-    max-width: 100%;
-    margin-right: 0.5rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: auto;
   }
+
+  /* 16px stops iOS Safari from zooming in when the input is focused */
+  .rag-chat-input {
+    font-size: 16px;
+  }
+}
+/*==================== TOOLTIP ====================*/
+/*
+  Reusable tooltip. Add to any element:
+    data-tooltip="Text"                  shows above (default)
+    data-tooltip-pos="left|right|bottom" changes the side
+*/
+[data-tooltip] {
+  position: relative;
+}
+
+/* Fixed elements must stay fixed; the tooltip still anchors to them */
+.scrollup[data-tooltip],
+.cmd-prompt[data-tooltip] {
+  position: fixed;
+}
+
+[data-tooltip]::after,
+[data-tooltip]::before {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: var(--z-modal, 1000);
+}
+
+/* Bubble */
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.4rem;
+  background-color: var(--first-color);
+  color: #fff;
+  font-family: var(--body-font);
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  line-height: 1.3;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Arrow */
+[data-tooltip]::before {
+  content: "";
+  border: 5px solid transparent;
+}
+
+/* Top (default) */
+[data-tooltip]::after {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+}
+
+[data-tooltip]::before {
+  bottom: calc(100% + 0px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  border-top-color: var(--first-color);
+}
+
+/* Bottom */
+[data-tooltip-pos="bottom"]::after {
+  top: calc(100% + 10px);
+  bottom: auto;
+  transform: translate(-50%, -4px);
+}
+
+[data-tooltip-pos="bottom"]::before {
+  top: 100%;
+  bottom: auto;
+  transform: translate(-50%, -4px);
+  border-top-color: transparent;
+  border-bottom-color: var(--first-color);
+}
+
+/* Left */
+[data-tooltip-pos="left"]::after {
+  right: calc(100% + 10px);
+  left: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translate(4px, -50%);
+}
+
+[data-tooltip-pos="left"]::before {
+  right: 100%;
+  left: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translate(4px, -50%);
+  border-top-color: transparent;
+  border-left-color: var(--first-color);
+}
+
+/* Right */
+[data-tooltip-pos="right"]::after {
+  left: calc(100% + 10px);
+  top: 50%;
+  bottom: auto;
+  transform: translate(-4px, -50%);
+}
+
+[data-tooltip-pos="right"]::before {
+  left: 100%;
+  top: 50%;
+  bottom: auto;
+  transform: translate(-4px, -50%);
+  border-top-color: transparent;
+  border-right-color: var(--first-color);
+}
+
+/* Show on hover (mouse only, so taps on phones don't leave it stuck) and keyboard focus */
+@media (hover: hover) {
+  [data-tooltip]:hover::after,
+  [data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  [data-tooltip]:not([data-tooltip-pos]):hover::after,
+  [data-tooltip]:not([data-tooltip-pos]):hover::before,
+  [data-tooltip-pos="bottom"]:hover::after,
+  [data-tooltip-pos="bottom"]:hover::before {
+    transform: translate(-50%, 0);
+  }
+
+  [data-tooltip-pos="left"]:hover::after,
+  [data-tooltip-pos="left"]:hover::before,
+  [data-tooltip-pos="right"]:hover::after,
+  [data-tooltip-pos="right"]:hover::before {
+    transform: translate(0, -50%);
+  }
+}
+
+[data-tooltip]:focus-visible::after,
+[data-tooltip]:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* No need for the chat tooltip once the chat is open */
+.rag-chat-toggle-open[data-tooltip]::after,
+.rag-chat-toggle-open[data-tooltip]::before {
+  display: none;
 }

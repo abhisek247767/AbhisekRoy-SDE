@@ -99,13 +99,15 @@
         <div class="home_content grid">
           <div class="home_social">
             <a href="https://www.linkedin.com/in/royabhisek247767/" target="_blank" class="home_social-icon"
-              id="contact-linkedin">
+              id="contact-linkedin" data-tooltip="LinkedIn" data-tooltip-pos="right">
               <i class="uil uil-linkedin-alt"></i>
             </a>
-            <a href="https://github.com/abhisek247767" target="_blank" class="home_social-icon" id="contact-github">
+            <a href="https://github.com/abhisek247767" target="_blank" class="home_social-icon" id="contact-github"
+              data-tooltip="GitHub" data-tooltip-pos="right">
               <i class="uil uil-github-alt"></i>
             </a>
-            <a href="https://twitter.com/abhisekroy169" target="_blank" class="home_social-icon">
+            <a href="https://twitter.com/abhisekroy169" target="_blank" class="home_social-icon"
+              data-tooltip="Twitter" data-tooltip-pos="right">
               <i class="uil uil-twitter-alt"></i>
             </a>
           </div>
@@ -1246,13 +1248,15 @@
   </footer>
 
   <!-- ========== SCROLL TOP ========== -->
-  <a href="#home" class="scrollup" id="scroll-up">
+  <a href="#home" class="scrollup" id="scroll-up" aria-label="Back to top"
+    data-tooltip="Back to top" data-tooltip-pos="right">
     <i class="uil uil-arrow-up scrollup_icon"></i>
   </a>
 
   <!-- ========== RAG Chatbot Widget ========== -->
   <div id="rag-chat-widget" class="rag-chat-widget">
-    <button id="rag-chat-toggle" class="rag-chat-toggle" aria-label="Chat with Abhisek's AI">
+    <button id="rag-chat-toggle" class="rag-chat-toggle" aria-label="Chat with Abhisek's AI"
+      data-tooltip="Chat with my AI" data-tooltip-pos="left">
       <i class="uil uil-message rag-chat-toggle-icon-open"></i>
       <i class="uil uil-times rag-chat-toggle-icon-close" style="display: none"></i>
       <span id="rag-chat-badge" class="rag-chat-badge" style="display: none"></span>
@@ -1302,7 +1306,8 @@
     </audio>
   </div>
 
-  <a href="https://personacli.netlify.app/" target="_blank" class="cmd-prompt" id="cmd-prompt">
+  <a href="https://personacli.netlify.app/" target="_blank" class="cmd-prompt" id="cmd-prompt"
+    data-tooltip="Open terminal portfolio" data-tooltip-pos="left">
     <img src="images/terminal (2).png" alt="Terminal" class="cmd-icon" />
   </a>
 
@@ -1316,8 +1321,13 @@
 
   <script>
     var swiper = new Swiper(".testimonial-swiper", {
-      slidesPerView: 3,
+      slidesPerView: 1,
       spaceBetween: 20,
+      autoHeight: true,
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
       loop: true,
       autoplay: {
         delay: 2500,
