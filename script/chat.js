@@ -30,6 +30,7 @@
   let isSending = false;
   let unreadCount = 0;
   const conversationHistory = [];
+  const GREETING_DELAY_MS = 3000;
 
   // Play notification sound (if file exists)
   function playNotificationSound() {
@@ -82,6 +83,10 @@
         if (badgeEl) {
           badgeEl.style.display = "flex";
           badgeEl.textContent = unreadCount > 9 ? "9+" : String(unreadCount);
+          // Restart the pop animation for each new unread message
+          badgeEl.classList.remove("rag-chat-badge-pop");
+          void badgeEl.offsetWidth;
+          badgeEl.classList.add("rag-chat-badge-pop");
         }
       }
     }
@@ -285,4 +290,11 @@
   });
 
   setupSuggestions();
+
+  // Greet visitors with an unread welcome message, like a chat app
+  setTimeout(function () {
+    if (!isOpen && conversationHistory.length === 0) {
+      showWelcomeMessage();
+    }
+  }, GREETING_DELAY_MS);
 })();
