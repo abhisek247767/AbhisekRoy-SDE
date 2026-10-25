@@ -133,6 +133,12 @@ const getCurrentTheme = () =>
 const getCurrentIcon = () =>
   themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
 
+// Tooltip on the wrapper names the mode the button switches to
+function updateThemeTooltip() {
+  themeButton.parentElement.dataset.tooltip =
+    getCurrentTheme() === "dark" ? "Switch to light mode" : "Switch to dark mode";
+}
+
 // We validate if the user previously chose a topic
 if (selectedTheme) {
   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
@@ -155,7 +161,9 @@ themeButton.addEventListener("click", () => {
   // We save the theme and the current icon that the user chose
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
+  updateThemeTooltip();
 });
+updateThemeTooltip();
 
 const board = document.getElementById("board");
 const cells = [];
