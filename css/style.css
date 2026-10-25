@@ -338,6 +338,14 @@ img {
     vertical-align: -0.25em;
 }
 
+/* X logo is an inline SVG; slightly smaller since it fills its whole box */
+.x-icon {
+    width: 0.9em;
+    height: 0.9em;
+    fill: currentColor;
+    vertical-align: -0.1em;
+}
+
 .home_social-icon:hover {
     color: var(--first-color-alt);
     transform: translateX(0.25rem);
