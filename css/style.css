@@ -120,6 +120,11 @@ body.dark-theme {
     color: var(--first-color);
 }
 
+/* Wrapper that carries the theme button's tooltip (the icon's ::before is the glyph) */
+.nav_theme {
+    display: flex;
+}
+
 /* ========== Base ========== */
 * {
     box-sizing: border-box;
@@ -2281,27 +2286,27 @@ body.dark-theme .rag-chat-status {
   display: none;
 }
 
-/* Navbar terminal tooltip: right-aligned so it stays on screen near the edge */
-.nav_terminal[data-tooltip]::after {
+/* Navbar tooltips (terminal, theme): right-aligned so they stay on screen near the edge */
+:is(.nav_terminal, .nav_theme)[data-tooltip]::after {
   left: auto;
   right: -0.5rem;
   transform: translateY(-4px);
 }
 
-.nav_terminal[data-tooltip]:hover::after,
-.nav_terminal[data-tooltip]:focus-visible::after {
+:is(.nav_terminal, .nav_theme)[data-tooltip]:hover::after,
+:is(.nav_terminal, .nav_theme)[data-tooltip]:focus-visible::after {
   transform: translateY(0);
 }
 
 /* The navbar sits at the bottom on small screens, so open the tooltip upward */
 @media screen and (max-width: 767px) {
-  .nav_terminal[data-tooltip]::after {
+  :is(.nav_terminal, .nav_theme)[data-tooltip]::after {
     top: auto;
     bottom: calc(100% + 10px);
     transform: translateY(4px);
   }
 
-  .nav_terminal[data-tooltip]::before {
+  :is(.nav_terminal, .nav_theme)[data-tooltip]::before {
     top: auto;
     bottom: 100%;
     transform: translate(-50%, 4px);
