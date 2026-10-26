@@ -202,20 +202,25 @@ function initAnnotations() {
     return r.top < window.innerHeight && r.bottom > 0;
   };
 
-  // Marks further down draw when they scroll into view, so they're seen animating
+  // Marks further down draw when they scroll into view, so they're seen animating.
+  // Inside a slider, the slider itself is watched instead: its loop keeps duplicate
+  // slides and swaps between them, so every copy is drawn as soon as the slider
+  // appears; otherwise the mark would vanish and redraw on each loop.
+  laterMarks.forEach((m) => (m.trigger = m.el.closest(".swiper") || m.el));
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const mark = laterMarks.find((m) => m.el === entry.target);
-        if (!mark || isCollapsed(mark.el)) return;
-        if (entry.intersectionRatio >= 0.99 && !mark.annotation.isShowing()) {
-          mark.annotation.show();
-        }
+        const isSlider = entry.target.classList.contains("swiper");
+        if (entry.intersectionRatio < (isSlider ? 0.3 : 0.99)) return;
+        laterMarks.forEach((m) => {
+          if (m.trigger !== entry.target || isCollapsed(m.el)) return;
+          if (!m.annotation.isShowing()) m.annotation.show();
+        });
       });
     },
-    { threshold: [0, 1], rootMargin: "0px 0px -10% 0px" }
+    { threshold: [0, 0.3, 1], rootMargin: "0px 0px -10% 0px" }
   );
-  laterMarks.forEach((m) => observer.observe(m.el));
+  new Set(laterMarks.map((m) => m.trigger)).forEach((t) => observer.observe(t));
 
   // Opening one skills category closes the others: hide marks in closed lists
   // and redraw them when their list opens again
