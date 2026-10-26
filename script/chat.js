@@ -233,6 +233,15 @@
     }
   }
 
+  // "AI assistant" link in the intro opens the chat
+  const openChatLink = document.getElementById("open-chat-link");
+  if (openChatLink) {
+    openChatLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!isOpen) openChat();
+    });
+  }
+
   // Toggle button click handler
   toggleBtn.addEventListener("click", function () {
     if (isOpen && !isMinimized) {
