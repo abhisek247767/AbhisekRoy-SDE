@@ -117,6 +117,25 @@ function scrollUp() {
 }
 window.addEventListener("scroll", scrollUp);
 
+const localTimeEl = document.getElementById("local-time");
+const localTimeFormat = new Intl.DateTimeFormat("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+});
+
+function updateLocalTime() {
+  const now = new Date();
+  localTimeEl.textContent = localTimeFormat.format(now).toLowerCase();
+  localTimeEl.dateTime = now.toISOString();
+}
+
+if (localTimeEl) {
+  updateLocalTime();
+  setInterval(updateLocalTime, 50000);
+}
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";

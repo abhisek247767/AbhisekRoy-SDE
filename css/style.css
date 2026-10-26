@@ -942,6 +942,24 @@ body {
     color: var(--text-color-light);
 }
 
+/* Location and live Kolkata time on one line (time updated by script.js) */
+.contact_location {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.75rem;
+}
+
+.contact_local-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.contact_local-time i {
+    color: var(--first-color);
+}
+
 .contact_content {
     background-color: var(--input-color);
     border-radius: .5rem;
