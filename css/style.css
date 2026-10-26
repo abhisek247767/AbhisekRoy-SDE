@@ -669,7 +669,8 @@ img {
 
 .skills_titles {
     display: flex;
-    justify-content: space-between;
+    /* Keep a "new" badge next to the name even if it sits outside the <h3> */
+    justify-content: flex-start;
     margin-bottom: var(--mb-0-5);
 }
 
