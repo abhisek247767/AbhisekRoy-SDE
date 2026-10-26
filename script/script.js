@@ -194,19 +194,68 @@ function initAnnotations() {
     RoughNotation.annotationGroup(introMarks.map((m) => m.annotation)).show();
   }, 800);
 
+  // A drawn mark sits on top of the page, so it must be hidden while its text is
+  // in a collapsed skills list, or it would stay floating where the text was
+  const isCollapsed = (el) => !!el.closest(".skills_close");
+  const isOnScreen = (el) => {
+    const r = el.getBoundingClientRect();
+    return r.top < window.innerHeight && r.bottom > 0;
+  };
+
   // Marks further down draw when they scroll into view, so they're seen animating
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
         const mark = laterMarks.find((m) => m.el === entry.target);
-        if (mark) mark.annotation.show();
-        observer.unobserve(entry.target);
+        if (!mark || isCollapsed(mark.el)) return;
+        if (entry.intersectionRatio >= 0.99 && !mark.annotation.isShowing()) {
+          mark.annotation.show();
+        }
       });
     },
-    { threshold: 1, rootMargin: "0px 0px -10% 0px" }
+    { threshold: [0, 1], rootMargin: "0px 0px -10% 0px" }
   );
   laterMarks.forEach((m) => observer.observe(m.el));
+
+  // Opening one skills category closes the others: hide marks in closed lists
+  // and redraw them when their list opens again
+  document.querySelectorAll(".skills_content").forEach((category) => {
+    new MutationObserver(() => {
+      laterMarks.forEach((m) => {
+        if (!category.contains(m.el)) return;
+        if (isCollapsed(m.el)) {
+          m.annotation.hide();
+        } else if (isOnScreen(m.el)) {
+          m.annotation.hide();
+          m.annotation.show();
+        }
+      });
+    }).observe(category, { attributes: true, attributeFilter: ["class"] });
+  });
+
+  // Content above a mark can change height (e.g. the recommendations slider resizes
+  // per slide) and push the text down, but the drawn mark doesn't follow on its own.
+  // When the page height changes, redraw (without animation) any mark whose text moved.
+  const allMarks = introMarks.concat(laterMarks);
+  const placeOf = (el) => {
+    const r = el.getBoundingClientRect();
+    return Math.round(r.top + window.scrollY) + "," + Math.round(r.left + window.scrollX);
+  };
+  allMarks.forEach((m) => (m.place = placeOf(m.el)));
+
+  new ResizeObserver(() => {
+    allMarks.forEach((m) => {
+      const place = placeOf(m.el);
+      if (place === m.place) return;
+      m.place = place;
+      if (!m.annotation.isShowing()) return;
+      const animate = m.annotation.animate;
+      m.annotation.animate = false;
+      m.annotation.hide();
+      m.annotation.show();
+      m.annotation.animate = animate;
+    });
+  }).observe(document.body);
 }
 
 // Wait for fonts (not every image) so the marks are measured against the final text
