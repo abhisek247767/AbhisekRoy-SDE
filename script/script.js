@@ -136,6 +136,82 @@ if (localTimeEl) {
   setInterval(updateLocalTime, 50000);
 }
 
+function initAnnotations() {
+  if (!window.RoughNotation) return;
+  const marks = document.querySelectorAll("[data-annotate]");
+  if (!marks.length) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  // Resolve the theme red to rgb so the highlighter can use a see-through version
+  const probe = document.createElement("span");
+  probe.style.color = "var(--first-color)";
+  document.body.appendChild(probe);
+  const red = getComputedStyle(probe).color;
+  probe.remove();
+  const softRed = red.replace("rgb(", "rgba(").replace(")", ", 0.25)");
+
+  const padding = { circle: 3, box: 3, highlight: 1, underline: 2 };
+  const introMarks = [];
+  const laterMarks = [];
+
+  marks.forEach((el) => {
+    const type = el.dataset.annotate;
+    const color = type === "highlight" ? softRed : red;
+    const annotation = RoughNotation.annotate(el, {
+      type,
+      color,
+      padding: padding[type] || 2,
+      strokeWidth: 1.5,
+      multiline: true,
+      animationDuration: 600,
+      animate: !reduceMotion,
+    });
+
+    // Redraw the mark each time the mouse comes back over the phrase
+    el.addEventListener("mouseenter", () => {
+      annotation.hide();
+      annotation.show();
+    });
+
+    // About cards turn red on hover, so draw the mark in white there
+    const card = el.closest(".about_box");
+    if (card) {
+      card.addEventListener("mouseenter", () => (annotation.color = "#fff"));
+      card.addEventListener("mouseleave", () => (annotation.color = color));
+    }
+
+    (el.closest(".home_description") ? introMarks : laterMarks).push({
+      el,
+      annotation,
+    });
+  });
+
+  // Intro marks draw one after another, shortly after the page appears
+  setTimeout(() => {
+    RoughNotation.annotationGroup(introMarks.map((m) => m.annotation)).show();
+  }, 800);
+
+  // Marks further down draw when they scroll into view, so they're seen animating
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const mark = laterMarks.find((m) => m.el === entry.target);
+        if (mark) mark.annotation.show();
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 1, rootMargin: "0px 0px -10% 0px" }
+  );
+  laterMarks.forEach((m) => observer.observe(m.el));
+}
+
+// Wait for fonts (not every image) so the marks are measured against the final text
+document.fonts.ready.then(initAnnotations);
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";

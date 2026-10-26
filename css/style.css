@@ -379,7 +379,21 @@ img {
 
 .home_description {
     margin-bottom: var(--mb-2);
+    line-height: 1.7;
 
+}
+
+.home_link {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    text-decoration: underline;
+    text-decoration-color: var(--first-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.home_link:hover {
+    color: var(--first-color);
 }
 
 .home_scroll {
@@ -691,6 +705,17 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+/* Small hand-drawn "new" badge; the circle is drawn by script.js (data-annotate) */
+.badge-new {
+    margin-left: 0.35rem;
+    padding: 0 0.3rem;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    line-height: 1.4;
+    color: var(--first-color);
+    text-transform: lowercase;
 }
 
 /* Devicon has no brand color for Postman */
