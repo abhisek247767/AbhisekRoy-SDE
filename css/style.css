@@ -955,6 +955,14 @@ img {
     background-color: var(--first-color);
 }
 
+/* Swiper's stylesheet loads after this one and colors its dots with its own blue
+   theme color; point those variables at the site's theme color instead */
+.swiper,
+.swiper-container {
+    --swiper-theme-color: var(--first-color);
+    --swiper-pagination-color: var(--first-color);
+}
+
 .swiper-button-prev,
 .swiper-button-next,
 .swiper-pagination-bullet {
