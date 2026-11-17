@@ -648,6 +648,17 @@ img {
     margin-right: var(--mb-0-75);
 }
 
+/* Image icon (sparkles) used as a mask so it takes the theme red like the font icons */
+.skills_icon-ai {
+    flex-shrink: 0;
+    /* Same box width as the font icons so the category titles line up */
+    width: 2rem;
+    height: 1.75rem;
+    background-color: var(--first-color);
+    -webkit-mask: url("../images/ai.png") center / contain no-repeat;
+    mask: url("../images/ai.png") center / contain no-repeat;
+}
+
 .skills_title {
     font-size: var(--h3-font-size);
 }
@@ -717,6 +728,27 @@ img {
     line-height: 1.4;
     color: var(--first-color);
     text-transform: lowercase;
+}
+
+/* Single-color logo files used as masks, filled with the theme text color
+   so they stay visible in dark mode (like the GitHub and Express icons) */
+.skills_icon-img {
+    display: inline-block;
+    height: 1.25rem;
+    background-color: currentColor;
+    -webkit-mask: center / contain no-repeat;
+    mask: center / contain no-repeat;
+}
+
+.skills_icon-langchain {
+    -webkit-mask-image: url("../images/langchain.svg");
+    mask-image: url("../images/langchain.svg");
+}
+
+/* LangGraph logo from LobeHub Icons (MIT) */
+.skills_icon-langgraph {
+    -webkit-mask-image: url("../images/langgraph.svg");
+    mask-image: url("../images/langgraph.svg");
 }
 
 /* Devicon has no brand color for Postman */
