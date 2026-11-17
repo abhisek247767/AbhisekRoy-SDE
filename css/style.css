@@ -570,6 +570,24 @@ img {
     column-gap: 1.5rem;
 }
 
+/* Left-side entries hug the timeline from the left, mirroring the right side */
+.qualification_data > div:first-child {
+    text-align: right;
+}
+
+.qualification_data > div:first-child .qualification_info {
+    justify-content: flex-end;
+}
+
+/* Inline (not flex) so the calendar icon stays next to the date when it wraps */
+.qualification_data > div:first-child .qualification_calender {
+    display: block;
+}
+
+.qualification_data > div:first-child .qualification_calender i {
+    margin-right: 0.3rem;
+}
+
 .qualification_title {
     font-size: var(--normal-font-size);
     font-weight: var(--font-medium);
@@ -749,6 +767,12 @@ img {
 .skills_icon-langgraph {
     -webkit-mask-image: url("../images/langgraph.svg");
     mask-image: url("../images/langgraph.svg");
+}
+
+/* Keycloak logo from Simple Icons (CC0); not in Devicon */
+.skills_icon-keycloak {
+    -webkit-mask-image: url("../images/keycloak.svg");
+    mask-image: url("../images/keycloak.svg");
 }
 
 /* Devicon has no brand color for Postman */
