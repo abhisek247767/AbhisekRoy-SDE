@@ -769,6 +769,17 @@ img {
     mask-image: url("../images/langgraph.svg");
 }
 
+/* LangSmith and Langfuse logos from LobeHub Icons (MIT) */
+.skills_icon-langsmith {
+    -webkit-mask-image: url("../images/langsmith.svg");
+    mask-image: url("../images/langsmith.svg");
+}
+
+.skills_icon-langfuse {
+    -webkit-mask-image: url("../images/langfuse.svg");
+    mask-image: url("../images/langfuse.svg");
+}
+
 /* Keycloak logo from Simple Icons (CC0); not in Devicon */
 .skills_icon-keycloak {
     -webkit-mask-image: url("../images/keycloak.svg");
