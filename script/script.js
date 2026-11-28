@@ -263,8 +263,111 @@ function initAnnotations() {
   }).observe(document.body);
 }
 
-// Wait for fonts (not every image) so the marks are measured against the final text
 document.fonts.ready.then(initAnnotations);
+
+// Collapsed cards show about the first PREVIEW_CHARS characters of the quote (cut at the
+// end of a word). Everything after is wrapped in .testimonial-rest (hidden by CSS until
+// "Show more"). This runs before the slider starts, so its loop copies get it too.
+const PREVIEW_CHARS = 150;
+
+// Index in the raw text of the first space after PREVIEW_CHARS visible characters.
+// Runs of spaces/newlines from the HTML indentation count as one character.
+function previewCutIndex(text) {
+  let count = 0;
+  let inSpace = false;
+  for (let i = 0; i < text.length; i++) {
+    if (/\s/.test(text[i])) {
+      if (!inSpace && count > 0) {
+        if (count >= PREVIEW_CHARS) return i;
+        count++;
+      }
+      inSpace = true;
+    } else {
+      count++;
+      inSpace = false;
+    }
+  }
+  return -1; // short quote, nothing to hide
+}
+
+function splitQuotePreview(quote) {
+  const end = previewCutIndex(quote.textContent);
+  if (end === -1) return false;
+
+  // Split at the cut point; if it lands inside an element (e.g. a highlighted
+  // phrase), cut after that element instead
+  let remaining = end;
+  let splitAt = null;
+  for (const node of Array.from(quote.childNodes)) {
+    const length = node.textContent.length;
+    if (remaining <= length) {
+      splitAt =
+        node.nodeType === Node.TEXT_NODE ? node.splitText(remaining) : node.nextSibling;
+      break;
+    }
+    remaining -= length;
+  }
+  if (!splitAt || (!splitAt.textContent.trim() && !splitAt.nextSibling)) return false;
+
+  const rest = document.createElement("span");
+  rest.className = "testimonial-rest";
+  while (splitAt.nextSibling) rest.appendChild(splitAt.nextSibling);
+  rest.prepend(splitAt);
+
+  const ellipsis = document.createElement("span");
+  ellipsis.className = "testimonial-ellipsis";
+  ellipsis.textContent = "…";
+  quote.append(ellipsis, rest);
+  return true;
+}
+
+document.querySelectorAll(".testimonial-card blockquote").forEach((quote) => {
+  if (!splitQuotePreview(quote)) return; // short quotes need no button
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "testimonial-more";
+  button.textContent = "Show more";
+  button.setAttribute("aria-expanded", "false");
+  quote.after(button);
+});
+
+// Give every card the height of the tallest collapsed card: they line up,
+// and an expanded card grows on its own
+function updateTestimonialCards() {
+  const cards = document.querySelectorAll(".testimonial-card");
+  const slider = document.querySelector(".testimonial-swiper");
+  if (!slider) return;
+  slider.style.removeProperty("--testimonial-card-height");
+  let tallest = 0;
+  cards.forEach((card) => {
+    if (!card.classList.contains("is-expanded")) {
+      tallest = Math.max(tallest, card.offsetHeight);
+    }
+  });
+  if (tallest) slider.style.setProperty("--testimonial-card-height", tallest + "px");
+  if (slider.swiper) slider.swiper.updateAutoHeight(0);
+}
+window.addEventListener("load", updateTestimonialCards);
+window.addEventListener("resize", updateTestimonialCards);
+
+// One listener for all cards, including the loop copies
+document.addEventListener("click", (e) => {
+  const button = e.target.closest(".testimonial-more");
+  if (!button) return;
+  const card = button.closest(".testimonial-card");
+  const expanded = card.classList.toggle("is-expanded");
+  button.textContent = expanded ? "Show less" : "Show more";
+  button.setAttribute("aria-expanded", expanded);
+
+  // Hold the slider still while a card is open, and let it resize to the open card
+  const slider = card.closest(".swiper");
+  if (slider && slider.swiper) {
+    if (slider.swiper.autoplay) {
+      expanded ? slider.swiper.autoplay.stop() : slider.swiper.autoplay.start();
+    }
+    slider.swiper.updateAutoHeight(300);
+  }
+});
 
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");

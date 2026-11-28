@@ -1646,7 +1646,10 @@ body.dark-theme .cell {
 }
 
 .testimonial-card {
-    background-color: var(--card-bg);
+    /* Card look: white card with a soft border and shadow (dark version below) */
+    background-color: #fff;
+    border: 1px solid hsl(var(--hue-color), 40%, 92%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
@@ -1662,8 +1665,9 @@ body.dark-theme .cell {
 }
 
 .testimonial-card h2 {
+    display: inline-block;
     color: var(--text-color);
-    margin: 10px 0 5px;
+    margin: 10px 10px 5px 0;
 }
 
 .testimonial-card h4 {
@@ -1674,7 +1678,7 @@ body.dark-theme .cell {
     font-size: 1rem;
     padding: 15px;
     background-color: var(--card-bg);
-    border-left: 5px solid var(--title-color);
+    border-left: 5px solid var(--first-color);
     border-radius: 5px;
     position: relative;
 }
@@ -1684,7 +1688,68 @@ body.dark-theme .cell {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
-    border: 3px solid var(--title-color);
+    border: 3px solid var(--first-color);
+}
+
+
+/* Equal height: every card gets the tallest collapsed card's height (set in script.js);
+   cards don't stretch to each other, so an expanded card grows on its own */
+.testimonial-card {
+    min-height: var(--testimonial-card-height, auto);
+}
+
+.testimonial-swiper .swiper-wrapper {
+    align-items: flex-start;
+}
+
+.testimonial-swiper .swiper-slide {
+    height: auto;
+}
+
+/* Collapsed: only the first sentence and "…" (split in script.js); expanded: full quote */
+.testimonial-card:not(.is-expanded) .testimonial-rest,
+.testimonial-card.is-expanded .testimonial-ellipsis {
+    display: none;
+}
+
+.testimonial-more {
+    display: block;
+    margin: 0.75rem auto 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: var(--body-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+    cursor: pointer;
+}
+
+.testimonial-more[hidden] {
+    display: none;
+}
+
+.testimonial-more:hover {
+    color: var(--first-color-alt);
+}
+
+body.dark-theme .testimonial-card {
+    background-color: hsl(var(--hue-color), 29%, 16%);
+    border-color: hsl(var(--hue-color), 20%, 24%);
+    box-shadow: none;
+}
+
+/* Room around the cards so their shadow and hover zoom aren't cut off by the slider */
+.testimonial-swiper {
+    padding: 1rem 0.5rem 1.5rem;
+}
+
+body.dark-theme .testimonial-card blockquote {
+    border-left-color: var(--title-color);
+}
+
+body.dark-theme .testimonial-card .profile {
+    border-color: var(--title-color);
 }
 
 .tech-icons {
