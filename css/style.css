@@ -1662,8 +1662,9 @@ body.dark-theme .cell {
 }
 
 .testimonial-card h2 {
+    display: inline-block;
     color: var(--text-color);
-    margin: 10px 0 5px;
+    margin: 10px 10px 5px 0;
 }
 
 .testimonial-card h4 {
@@ -1674,7 +1675,7 @@ body.dark-theme .cell {
     font-size: 1rem;
     padding: 15px;
     background-color: var(--card-bg);
-    border-left: 5px solid var(--title-color);
+    border-left: 5px solid var(--first-color);
     border-radius: 5px;
     position: relative;
 }
@@ -1684,7 +1685,16 @@ body.dark-theme .cell {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
-    border: 3px solid var(--title-color);
+    border: 3px solid var(--first-color);
+}
+
+
+body.dark-theme .testimonial-card blockquote {
+    border-left-color: var(--title-color);
+}
+
+body.dark-theme .testimonial-card .profile {
+    border-color: var(--title-color);
 }
 
 .tech-icons {
